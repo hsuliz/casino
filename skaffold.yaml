@@ -22,6 +22,32 @@ build:
       #  builder: paketobuildpacks/builder-jammy-base
       #  env:
       #    - BP_JVM_VERSION=21
+deploy:
+  helm:
+    releases:
+      - name: mongodb
+        remoteChart: bitnami/mongodb
+        version: 14.4.0
+        createNamespace: true
+
+        overrides:
+          image:
+            repository: mongo
+            tag: "6.0.12-jammy"
+            pullPolicy: IfNotPresent
+          extraEnvVars:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: root
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: dumb-pass
+          persistence:
+            mountPath: /data/db
+
+          # Runs an init container that sets the permissions of the persistence volume.
+          # Without this, mongodb errors on start
+          # {"error":"IllegalOperation: Attempted to create a lock file on a read-only directory: /data/db"}
+          volumePermissions:
+            enabled: true
 manifests:
   rawYaml:
     - services/game-service/k8s.yaml

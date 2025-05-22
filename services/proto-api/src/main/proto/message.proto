@@ -6,13 +6,13 @@ option java_outer_classname = "OddsProto";
 
 service Odds {
   // Sends a greeting
-  rpc GenerateOdds(OddsRequest) returns (OddsReply) {}
+  rpc GenerateOdds(OddsRequest) returns (OddsResponse) {}
 }
 
 message OddsRequest {
   string name = 1;
 }
 
-message OddsReply {
-  int32 odd = 1;
+message OddsResponse {
+  int32 odds = 1;
 }
