@@ -1,6 +1,6 @@
 spring:
   application:
-    name: odds
+    name: odds-service
   threads:
     virtual:
       enabled: true

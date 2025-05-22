@@ -37,11 +37,15 @@ dependencyManagement {
 dependencies {
   implementation(project(":proto-api"))
 
-  implementation("org.springframework.grpc:spring-grpc-server-web-spring-boot-starter")
-  //implementation("org.springframework.grpc:spring-grpc-spring-boot-starter")
+  implementation("org.springframework.grpc:spring-grpc-spring-boot-starter")
   implementation("io.grpc:grpc-kotlin-stub:1.4.3")
   implementation("org.jetbrains.kotlin:kotlin-reflect")
   implementation("io.grpc:grpc-services")
+
+  implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+  implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8-all:3.2.1")
+
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
