@@ -1,10 +1,12 @@
 package dev.hsuliz.casino.game.domain
 
+import dev.hsuliz.casino.game.clients.GrpcClient
 import org.springframework.stereotype.Component
 
 @Component
-class Game {
-  fun roll(odd: Int): Boolean {
-    return odd > 60
+class Game(private val client: GrpcClient) {
+
+  suspend fun roll(): Boolean {
+    return client.getOdds() > 60
   }
 }
