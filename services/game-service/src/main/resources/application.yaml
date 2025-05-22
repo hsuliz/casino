@@ -1,6 +1,9 @@
 spring:
   application:
     name: game
+  grpc:
+    server:
+      enabled: false
   threads:
     virtual:
       enabled: true
