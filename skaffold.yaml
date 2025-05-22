@@ -1,0 +1,28 @@
+apiVersion: skaffold/v4beta13
+kind: Config
+metadata:
+  name: casino
+build:
+  artifacts:
+    - image: game-service
+      context: services
+      jib:
+        type: gradle
+        project: game-service
+        args: [ --no-daemon ]
+    - image: odds-service
+      context: services
+      jib:
+        type: gradle
+        project: odds-service
+        args: [ --no-daemon ]
+      #buildpacks:
+      #  clearCache: false
+      #  trustBuilder: true
+      #  builder: paketobuildpacks/builder-jammy-base
+      #  env:
+      #    - BP_JVM_VERSION=21
+manifests:
+  rawYaml:
+    - services/game-service/k8s.yaml
+    - services/odds-service/k8s.yaml

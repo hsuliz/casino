@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: odds
+  threads:
+    virtual:
+      enabled: true
