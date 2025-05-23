@@ -7,6 +7,7 @@ plugins {
 }
 
 group = "dev.hsuliz.casino"
+
 version = "0.0.1-SNAPSHOT"
 
 jib {
@@ -52,11 +53,12 @@ dependencies {
   implementation("io.grpc:grpc-services")
 
   testImplementation("org.springframework.boot:spring-boot-starter-test")
-  testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
   testImplementation("org.springframework.grpc:spring-grpc-test")
+  testImplementation("io.kotest:kotest-runner-junit5-jvm:5.9.0")
+  testImplementation("io.kotest:kotest-assertions-core-jvm:5.9.0")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 kotlin { compilerOptions { freeCompilerArgs.addAll("-Xjsr305=strict") } }
 
-tasks.withType<Test> { useJUnitPlatform() }
+tasks.withType<Test>().configureEach { useJUnitPlatform() }

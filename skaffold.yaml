@@ -28,8 +28,6 @@ deploy:
       - name: mongodb
         remoteChart: bitnami/mongodb
         version: 14.4.0
-        createNamespace: true
-
         overrides:
           image:
             repository: mongo
