@@ -2,17 +2,12 @@ package dev.hsuliz.casino.game.domain
 
 import dev.hsuliz.casino.game.client.Odds
 import dev.hsuliz.casino.game.type.PayoutRule
-import dev.hsuliz.casino.game.type.Roll
 import dev.hsuliz.casino.game.type.SlotSymbol
-import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Component
-import java.util.*
 
 @Component
-class SimpleGame(
-    private val odds: Odds,
-    private val repository: CoroutineCrudRepository<Roll, UUID>,
-) : Game {
+class SimpleGame(private val odds: Odds) : Game {
+
   companion object {
     val rules =
         mapOf<Double, List<PayoutRule>>(
@@ -30,7 +25,7 @@ class SimpleGame(
   }
 
   override suspend fun getPayout(bet: Double): Double {
-    val multiplier = odds.getMultiplier(rules.keys)
+    val multiplier = odds.getMultiplier("Sasha", bet, rules.keys)
     return multiplier * bet
   }
 
@@ -40,9 +35,9 @@ class SimpleGame(
 
     if (multiplier == 0.0) {
       val winRules = rules.values.flatten()
-      val symbols = SlotSymbol.entries.toList()
+      val symbolList = SlotSymbol.entries.toList()
       generate@ while (true) {
-        winLine = MutableList(3) { symbols.random() }
+        winLine = MutableList(3) { symbolList.random() }
 
         for (i in 1..winLine.size) {
           val prefix = winLine.take(i)

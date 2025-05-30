@@ -11,7 +11,8 @@ service Odds {
 
 message ChoseMultiplierRequest {
   string username = 1;
-  repeated double multipliers = 2;
+  double bet = 2;
+  repeated double multipliers = 3;
 }
 
 message ChoseMultiplierResponse {

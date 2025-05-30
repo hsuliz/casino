@@ -13,7 +13,12 @@ class GrpcHandler(private val oddsDomain: Odds) : OddsGrpcKt.OddsCoroutineImplBa
   override suspend fun choseMultiplier(request: ChoseMultiplierRequest): ChoseMultiplierResponse {
     println("Got request: $request")
     return choseMultiplierResponse {
-      multiplier = oddsDomain.choseMultiplier(request.multipliersList)
+      multiplier =
+          oddsDomain.choseMultiplier(
+              request.username,
+              request.bet,
+              request.multipliersList,
+          )
     }
   }
 }

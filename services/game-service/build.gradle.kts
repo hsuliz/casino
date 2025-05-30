@@ -39,7 +39,6 @@ dependencies {
 
   implementation("org.springframework.boot:spring-boot-starter-webflux")
   implementation("org.springframework.grpc:spring-grpc-spring-boot-starter")
-  implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
   implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8-all:3.2.1")
 
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")

@@ -7,9 +7,14 @@ import org.springframework.stereotype.Component
 @Component
 class GrpcClient(private val simpleGrpcStub: OddsGrpcKt.OddsCoroutineStub) : Odds {
 
-  override suspend fun getMultiplier(multipliers: Set<Double>): Double {
+  override suspend fun getMultiplier(
+      username: String,
+      bet: Double,
+      multipliers: Set<Double>,
+  ): Double {
     val request = choseMultiplierRequest {
-      this.username = "Sasha"
+      this.username = username
+      this.bet = bet
       this.multipliers.addAll(multipliers)
     }
     return simpleGrpcStub.choseMultiplier(request).multiplier
