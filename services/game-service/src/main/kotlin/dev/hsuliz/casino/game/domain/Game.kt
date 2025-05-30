@@ -1,6 +1,6 @@
 package dev.hsuliz.casino.game.domain
 
-import dev.hsuliz.casino.game.types.SlotSymbol
+import dev.hsuliz.casino.game.type.SlotSymbol
 
 typealias Grid = List<List<SlotSymbol>>
 

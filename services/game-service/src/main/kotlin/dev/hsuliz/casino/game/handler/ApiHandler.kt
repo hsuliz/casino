@@ -1,8 +1,8 @@
-package dev.hsuliz.casino.game.handlers
+package dev.hsuliz.casino.game.handler
 
 import dev.hsuliz.casino.game.domain.SimpleGame
-import dev.hsuliz.casino.game.types.api.SpinRequest
-import dev.hsuliz.casino.game.types.api.SpinResponse
+import dev.hsuliz.casino.game.type.api.SpinRequest
+import dev.hsuliz.casino.game.type.api.SpinResponse
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping

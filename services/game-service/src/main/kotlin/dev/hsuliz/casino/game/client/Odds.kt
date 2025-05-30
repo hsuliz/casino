@@ -1,4 +1,4 @@
-package dev.hsuliz.casino.game.clients
+package dev.hsuliz.casino.game.client
 
 interface Odds {
 

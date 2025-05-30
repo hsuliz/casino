@@ -1,4 +1,4 @@
-package dev.hsuliz.casino.game.types
+package dev.hsuliz.casino.game.type
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

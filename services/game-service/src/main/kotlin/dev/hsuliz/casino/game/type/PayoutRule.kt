@@ -1,4 +1,4 @@
-package dev.hsuliz.casino.game.types
+package dev.hsuliz.casino.game.type
 
 data class PayoutRule(
     val symbol: SlotSymbol,

@@ -1,4 +1,4 @@
-package dev.hsuliz.casino.game.types.api
+package dev.hsuliz.casino.game.type.api
 
 import dev.hsuliz.casino.game.domain.Grid
 

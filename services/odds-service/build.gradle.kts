@@ -38,6 +38,7 @@ dependencies {
 
   implementation("org.springframework.grpc:spring-grpc-spring-boot-starter")
   implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8-all:3.2.1")
+  implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
   implementation("org.jetbrains.kotlin:kotlin-reflect")

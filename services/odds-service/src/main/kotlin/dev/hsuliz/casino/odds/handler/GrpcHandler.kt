@@ -1,4 +1,4 @@
-package dev.hsuliz.casino.odds.handlers
+package dev.hsuliz.casino.odds.handler
 
 import dev.hsuliz.casino.odds.domain.Odds
 import dev.hsuliz.casino.protos.ChoseMultiplierRequest

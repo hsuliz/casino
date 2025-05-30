@@ -1,4 +1,4 @@
-package dev.hsuliz.casino.game.types
+package dev.hsuliz.casino.game.type
 
 enum class SlotSymbol {
   A,

@@ -1,9 +1,9 @@
 package dev.hsuliz.casino.game.domain
 
-import dev.hsuliz.casino.game.clients.Odds
-import dev.hsuliz.casino.game.types.PayoutRule
-import dev.hsuliz.casino.game.types.Roll
-import dev.hsuliz.casino.game.types.SlotSymbol
+import dev.hsuliz.casino.game.client.Odds
+import dev.hsuliz.casino.game.type.PayoutRule
+import dev.hsuliz.casino.game.type.Roll
+import dev.hsuliz.casino.game.type.SlotSymbol
 import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.stereotype.Component
 import java.util.*
@@ -31,7 +31,6 @@ class SimpleGame(
 
   override suspend fun getPayout(bet: Double): Double {
     val multiplier = odds.getMultiplier(rules.keys)
-    repository.save(Roll("Sasha", multiplier, bet))
     return multiplier * bet
   }
 
