@@ -1,16 +1,19 @@
 package dev.hsuliz.casino.odds.handlers
 
 import dev.hsuliz.casino.odds.domain.Odds
+import dev.hsuliz.casino.protos.ChoseMultiplierRequest
+import dev.hsuliz.casino.protos.ChoseMultiplierResponse
 import dev.hsuliz.casino.protos.OddsGrpcKt
-import dev.hsuliz.casino.protos.OddsResponse
-import dev.hsuliz.casino.protos.OddsRequest
-import dev.hsuliz.casino.protos.oddsResponse
+import dev.hsuliz.casino.protos.choseMultiplierResponse
 import org.springframework.grpc.server.service.GrpcService
 
 @GrpcService
 class GrpcHandler(private val oddsDomain: Odds) : OddsGrpcKt.OddsCoroutineImplBase() {
-  override suspend fun generateOdds(request: OddsRequest): OddsResponse {
+
+  override suspend fun choseMultiplier(request: ChoseMultiplierRequest): ChoseMultiplierResponse {
     println("Got request: $request")
-    return oddsResponse { odds = oddsDomain.generateOdds() }
+    return choseMultiplierResponse {
+      multiplier = oddsDomain.choseMultiplier(request.multipliersList)
+    }
   }
 }

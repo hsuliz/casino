@@ -15,21 +15,24 @@ class Game(
 ) {
   companion object {
     val rules =
-        listOf(
-            PayoutRule(listOf(SlotSymbol.A, SlotSymbol.A, SlotSymbol.A), 10.0),
-            PayoutRule(listOf(SlotSymbol.A, SlotSymbol.A, null), 5.0),
-            PayoutRule(listOf(SlotSymbol.A, null, null), 2.0),
-            PayoutRule(listOf(SlotSymbol.K, SlotSymbol.K, SlotSymbol.K), 5.0),
-            PayoutRule(listOf(SlotSymbol.Q, SlotSymbol.Q, SlotSymbol.Q), 2.5),
-            PayoutRule(listOf(SlotSymbol.J, SlotSymbol.J, SlotSymbol.J), 1.0),
-            PayoutRule(listOf(SlotSymbol.TEN, SlotSymbol.TEN, SlotSymbol.TEN), 0.5),
+        mapOf<Double, List<PayoutRule>>(
+            10.0 to listOf(PayoutRule(SlotSymbol.A, 3)),
+            5.0 to
+                listOf(
+                    PayoutRule(SlotSymbol.K, 3),
+                    PayoutRule(SlotSymbol.A, 2),
+                ),
+            2.5 to listOf(PayoutRule(SlotSymbol.Q, 3)),
+            2.0 to listOf(PayoutRule(SlotSymbol.A, 1)),
+            1.0 to listOf(PayoutRule(SlotSymbol.J, 3)),
+            0.5 to listOf(PayoutRule(SlotSymbol.TEN, 3)),
         )
   }
 
-  suspend fun roll(): Grid {
-    val odds = odds.getOdds()
-    val grid = generateGrid(2.0)
-    repository.save(Game("Sasha", true, odds))
+  suspend fun roll(bet: Double): Grid {
+    val multiplier = odds.getMultiplier(rules.keys)
+    val grid = generateGrid(multiplier)
+    repository.save(Game("Sasha", multiplier, bet))
     return grid
   }
 }

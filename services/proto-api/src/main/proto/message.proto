@@ -5,14 +5,15 @@ option java_package = "dev.hsuliz.casino.protos";
 option java_outer_classname = "OddsProto";
 
 service Odds {
-  // Sends a greeting
-  rpc GenerateOdds(OddsRequest) returns (OddsResponse) {}
+
+  rpc ChoseMultiplier(ChoseMultiplierRequest) returns (ChoseMultiplierResponse) {}
 }
 
-message OddsRequest {
-  string name = 1;
+message ChoseMultiplierRequest {
+  string username = 1;
+  repeated double multipliers = 2;
 }
 
-message OddsResponse {
-  int32 odds = 1;
+message ChoseMultiplierResponse {
+  double multiplier = 1;
 }

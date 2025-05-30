@@ -5,8 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @Document
 data class Game(
-    val client: String,
-    val result: Boolean,
-    val odds: Int,
+    val username: String,
+    val multiplier: Double,
+    val bet: Double,
     @Id var id: String? = null,
 )

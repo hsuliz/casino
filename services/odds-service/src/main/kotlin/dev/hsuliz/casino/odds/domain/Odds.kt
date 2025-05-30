@@ -1,14 +1,15 @@
 package dev.hsuliz.casino.odds.domain
 
 import org.springframework.stereotype.Component
-import kotlin.random.Random
 
 @Component
 class Odds {
 
-  fun generateOdds(): Int {
-    val odds = Random.nextInt(0, 100)
-    println("Generated odd: $odds")
-    return odds
+  fun choseMultiplier(multipliers: List<Double>): Double {
+    val finalMultipliers = multipliers.toMutableList()
+    repeat(50) { finalMultipliers += 0.0 }
+    val multiplier = finalMultipliers.random()
+    println("Generated multiplier: $finalMultipliers")
+    return multiplier
   }
 }
