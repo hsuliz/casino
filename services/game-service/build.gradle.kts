@@ -7,7 +7,6 @@ plugins {
 }
 
 group = "dev.hsuliz.casino"
-
 version = "0.0.1-SNAPSHOT"
 
 jib {
@@ -38,9 +37,9 @@ dependencies {
   implementation(project(":proto-api"))
 
   implementation("org.springframework.boot:spring-boot-starter-webflux")
-  implementation("org.springframework.boot:spring-boot-starter-actuator")
   implementation("org.springframework.grpc:spring-grpc-spring-boot-starter")
   implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8-all:3.2.1")
+  implementation("org.springframework.boot:spring-boot-starter-actuator")
   implementation("io.micrometer:micrometer-registry-prometheus")
 
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")

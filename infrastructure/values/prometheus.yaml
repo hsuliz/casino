@@ -5,9 +5,13 @@ server:
     evaluation_interval: 15s
   extraScrapeConfigs:
     - job_name: game-service
-      metrics_path: /actuator/prometheus
       static_configs:
         - targets: [ 'game-service:80' ]
+      metrics_path: /actuator/prometheus
+    - job_name: odds-service
+      static_configs:
+        - targets: [ 'odds-service-http:80' ]
+      metrics_path: /actuator/prometheus
   persistentVolume:
     enabled: false
 

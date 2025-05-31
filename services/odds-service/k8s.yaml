@@ -17,17 +17,30 @@ spec:
         - name: odds-service
           image: odds-service
           ports:
+            - containerPort: 8080
             - containerPort: 9090
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: odds-service
+  name: odds-service-http
+spec:
+  selector:
+    app: odds-service
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: odds-service-grpc
 spec:
   selector:
     app: odds-service
   ports:
     - protocol: TCP
-      port: 9090
+      port: 50051
       targetPort: 9090
   type: ClusterIP

@@ -11,7 +11,7 @@ class GrpcConfig {
 
   @Bean
   fun simpleGrpcStub(channels: GrpcChannelFactory): OddsGrpcKt.OddsCoroutineStub {
-    val channel: ManagedChannel = channels.createChannel("odds-service:9090")
+    val channel: ManagedChannel = channels.createChannel("odds-service-grpc:50051")
     return OddsGrpcKt.OddsCoroutineStub(channel)
   }
 }

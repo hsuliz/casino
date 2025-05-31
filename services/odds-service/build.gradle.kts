@@ -17,7 +17,7 @@ jib {
   }
   container {
     creationTime = "USE_CURRENT_TIMESTAMP"
-    ports = listOf("9090")
+    ports = listOf("8080", "50051")
   }
 }
 
@@ -36,9 +36,12 @@ dependencyManagement {
 dependencies {
   implementation(project(":proto-api"))
 
+  implementation("org.springframework.boot:spring-boot-starter-webflux")
   implementation("org.springframework.grpc:spring-grpc-spring-boot-starter")
   implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8-all:3.2.1")
   implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
+  implementation("org.springframework.boot:spring-boot-starter-actuator")
+  implementation("io.micrometer:micrometer-registry-prometheus")
 
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
   implementation("org.jetbrains.kotlin:kotlin-reflect")

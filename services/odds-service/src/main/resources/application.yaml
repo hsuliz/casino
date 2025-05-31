@@ -6,4 +6,12 @@ spring:
       enabled: true
   data:
     mongodb:
-      uri: mongodb://root:dumb-pass@mongodb:27017/mydb?authSource=admin
+      uri: mongodb://root:dumb-pass@odds-db-mongodb:27017/mydb?authSource=admin
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
