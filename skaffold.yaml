@@ -4,6 +4,12 @@ metadata:
   name: casino
 build:
   artifacts:
+    - image: gateway
+      context: services
+      jib:
+        type: gradle
+        project: gateway
+        args: [ --no-daemon ]
     - image: game-service
       context: services
       jib:
@@ -48,5 +54,6 @@ deploy:
             enabled: true
 manifests:
   rawYaml:
+    - services/gateway/k8s.yaml
     - services/game-service/k8s.yaml
     - services/odds-service/k8s.yaml

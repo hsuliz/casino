@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 class ApiHandler(private val simpleGame: SimpleGame) {
 
-  @PostMapping
+  @PostMapping("/spin")
   suspend fun spin(@RequestBody request: SpinRequest): SpinResponse {
     val payout = simpleGame.getPayout(request.bet)
     val grid = simpleGame.generateGrid(payout / request.bet)
