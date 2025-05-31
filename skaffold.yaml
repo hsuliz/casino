@@ -31,27 +31,16 @@ build:
 deploy:
   helm:
     releases:
-      - name: mongodb
+      - name: odds-db
         remoteChart: bitnami/mongodb
         version: 14.4.0
-        overrides:
-          image:
-            repository: mongo
-            tag: "6.0.12-jammy"
-            pullPolicy: IfNotPresent
-          extraEnvVars:
-            - name: MONGO_INITDB_ROOT_USERNAME
-              value: root
-            - name: MONGO_INITDB_ROOT_PASSWORD
-              value: dumb-pass
-          persistence:
-            mountPath: /data/db
-
-          # Runs an init container that sets the permissions of the persistence volume.
-          # Without this, mongodb errors on start
-          # {"error":"IllegalOperation: Attempted to create a lock file on a read-only directory: /data/db"}
-          volumePermissions:
-            enabled: true
+        valuesFiles:
+          - infrastructure/mongodb/odds-values.yaml
+      - name: prometheus
+        remoteChart: bitnami/prometheus
+        version: 2.1.2
+        valuesFiles:
+          - infrastructure/prometheus/values.yaml
 manifests:
   rawYaml:
     - services/gateway/k8s.yaml

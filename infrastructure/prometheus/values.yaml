@@ -1,0 +1,15 @@
+server:
+  global:
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    evaluation_interval: 15s
+  extraScrapeConfigs:
+    - job_name: game-service
+      static_configs:
+        - targets: [ 'game-service:8080' ]
+      metrics_path: /actuator/prometheus
+  persistentVolume:
+    enabled: false
+
+alertmanager:
+  enabled: false  # If you're not using Alertmanager yet

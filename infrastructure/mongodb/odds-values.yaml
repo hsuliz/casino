@@ -1,0 +1,16 @@
+image:
+  repository: mongo
+  tag: "6.0.12-jammy"
+  pullPolicy: IfNotPresent
+extraEnvVars:
+  - name: MONGO_INITDB_ROOT_USERNAME
+    value: root
+  - name: MONGO_INITDB_ROOT_PASSWORD
+    value: dumb-pass
+persistence:
+  mountPath: /data/db
+# Runs an init container that sets the permissions of the persistence volume.
+# Without this, mongodb errors on start
+# {"error":"IllegalOperation: Attempted to create a lock file on a read-only directory: /data/db"}
+volumePermissions:
+  enabled: true
