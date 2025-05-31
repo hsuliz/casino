@@ -5,9 +5,9 @@ server:
     evaluation_interval: 15s
   extraScrapeConfigs:
     - job_name: game-service
-      static_configs:
-        - targets: [ 'game-service:8080' ]
       metrics_path: /actuator/prometheus
+      static_configs:
+        - targets: [ 'game-service:80' ]
   persistentVolume:
     enabled: false
 

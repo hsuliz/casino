@@ -35,12 +35,17 @@ deploy:
         remoteChart: bitnami/mongodb
         version: 14.4.0
         valuesFiles:
-          - infrastructure/mongodb/odds-values.yaml
+          - infrastructure/values/odds-mongodb.yaml
       - name: prometheus
         remoteChart: bitnami/prometheus
         version: 2.1.2
         valuesFiles:
-          - infrastructure/prometheus/values.yaml
+          - infrastructure/values/prometheus.yaml
+      - name: grafana
+        remoteChart: bitnami/grafana
+        version: 12.0.1
+        valuesFiles:
+          - infrastructure/values/grafana.yaml
 manifests:
   rawYaml:
     - services/gateway/k8s.yaml
